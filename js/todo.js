@@ -31,11 +31,14 @@ function setLsItem(item, value) {
 }
 
 // Create a new task in the DOM and in the local storage 
-function createNewTask(tskText, tskChecked = false, isNewTask = true) {
-    ++window.TASKID
+function createNewTask({
+    id,
+    checked,
+    text,
+}, isNewTask = true) {
     // Create the parent li 
     var li = document.createElement("li");
-    var t = document.createTextNode(tskText);
+    var t = document.createTextNode(text);
     li.appendChild(t);
 
     // Create the close span
@@ -51,8 +54,8 @@ function createNewTask(tskText, tskChecked = false, isNewTask = true) {
         prntLi.remove();
     })
     li.appendChild(span);
-    li.setAttribute("data-id", window.TASKID);
-    if (tskChecked) {
+    li.setAttribute("data-id", id);
+    if (checked) {
         li.classList.add("checked");
     }
 
@@ -65,8 +68,8 @@ function createNewTask(tskText, tskChecked = false, isNewTask = true) {
     var itemsTd = getLsItem(LS_TODO);
     itemsTd.push({
         "id": window.TASKID,
-        "checked": tskChecked,
-        "text": tskText,
+        "checked": checked,
+        "text": text,
     });
     setLsItem(LS_TODO, itemsTd);
 }
@@ -84,10 +87,13 @@ window.addEventListener("load", function () {
     // Add the existing elemts to the todos
     var itemsTd = getLsItem(LS_TODO);
     itemsTd.forEach(item => {
-        item && createNewTask(item.text, item.checked, false);
+        item && createNewTask(item, false);
     });
-    
-    notyf.success('Task synchronized successfully!');
+
+    if (itemsTd.length) {
+        window.TASKID = itemsTd.pop().id;
+        notyf.success('Task synchronized successfully!');
+    }
 });
 
 // Create a new list item and Add it to the local storage
@@ -100,10 +106,22 @@ addbtn.addEventListener("click", function () {
         titre.classList.add("missed-value");
     } else {
         var inputValue = titre.value.trim();
-        createNewTask(inputValue);
+        ++window.TASKID
+        createNewTask({
+            "id": Window.TASKID,
+            "text": inputValue,
+            "checked": false
+        });
         titre.value = "";
         titre.classList.remove("missed-value");
         notyf.success('Task added successfully!');
+    }
+});
+
+document.getElementById("titre").addEventListener("keyup", function (e) {
+    e.preventDefault();
+    if (e.key === 'Enter') {
+        document.getElementById("add").click();
     }
 });
 
