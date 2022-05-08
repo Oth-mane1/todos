@@ -86,6 +86,8 @@ window.addEventListener("load", function () {
     itemsTd.forEach(item => {
         item && createNewTask(item.text, item.checked, false);
     });
+    
+    notyf.success('Task synchronized successfully!');
 });
 
 // Create a new list item and Add it to the local storage
