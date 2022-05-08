@@ -1,6 +1,13 @@
+* {
+    font-family: Roboto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body {
+    background-image: url("./../images/Beauty_Linktree_Background.svg");
+}
+
 /* Remove margins and padding from the list */
 .todo-box ul {
-    margin: 0;
+    margin: 22px 0 0;
     padding: 0;
 }
 
@@ -15,11 +22,12 @@
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
+    margin: 9px 15px;
     list-style-type: none;
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
-
+    border-radius: 15px;
     /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -74,10 +82,11 @@
 
 /* Style the header */
 .header {
-    background-color: #09fbd3;
+    background-color: #1192EF;
     padding: 20px 40px;
     color: white;
     text-align: center;
+    border-radius: 22px;
 }
 
 /* Clear floats after the header */
@@ -92,12 +101,17 @@
     color: #000;
 }
 
+.header h2 {
+    font-size: 2em;
+    margin-top: 0;
+}
+
 /* Style the input */
 .todo-box input {
     margin: 0;
     height: 20px;
     border: none;
-    border-radius: 0;
+    border-radius: 15px 0 0 15px;
     width: 75%;
     padding: 10px;
     float: left;
@@ -107,9 +121,9 @@
 
 /* Style the "Add" button */
 .todo-box .addBtn {
-    padding: 10px;
+    all: unset;
     width: 17%;
-    height: 20px;
+    height: 40px;
     background: #d9d9d9;
     color: #555;
     float: left;
@@ -117,9 +131,13 @@
     font-size: 16px;
     cursor: pointer;
     transition: 0.3s;
-    border-radius: 0;
+    border-radius: 0 15px 15px 0px;
 }
 
 .todo-box .addBtn:hover {
     background-color: #bbb;
+}
+
+.missed-value {
+    border: solid 2px red !important;
 }
