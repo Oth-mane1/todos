@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
-    <title>Local Storage</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <title>TodOos ✔</title>
 </head>
 <body>
     <div class="box todo-box">
         <div class="header">
-            <h2>TO-DO</h2>
-            <p>Ajouter les taches d'aujourd'hui</p>
-            <input type="text" id="titre" placeholder="Titre...">
-            <span id="add" class="addBtn">Ajouter</span>
+            <h2>TodOos ✔</h2>
+            <p>Add today's tasks</p>
+            <input type="text" id="titre" placeholder="Title...">
+            <button id="add" class="addBtn" type="button">Ajouter</button>
         </div>
 
         <ul id="TdList">
         </ul>
     </div>
-    <script src="js/todo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <script src="./js/todo.js" defer></script>
 </body>
 </html>
